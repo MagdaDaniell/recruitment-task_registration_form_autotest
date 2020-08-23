@@ -17,9 +17,12 @@ def test_fill_forms(company_name, register_email, register_name, register_phone,
     driver.find_element_by_id("user_register_settings_agreementPersonalData").click()
     driver.find_element_by_id("user_register_settings_agreementMarketing").click()
     driver.find_element_by_id("user_register_submit").click()
+    success_message = driver.find_element_by_xpath("/html/body/div[6]/div").text
 
     driver.save_screenshot("screenshot-login.png")
     driver.quit()
+
+    assert success_message == "OK - some registration logic is mocked"
 
 
 if __name__ == '__main__':
